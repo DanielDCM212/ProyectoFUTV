@@ -6,13 +6,36 @@ const passport = require('passport');
 const session = require('express-session');
 const flash = require('connect-flash');
 
+// Configuracion para HTTPS //
+const fs = require("fs");
+const https = require("https");
+
+const PORT = 443;
+
+
+
+
+
 // initializations
 const app = express();
+
+
+https.createServer({
+    key: fs.readFileSync("CA.key"),
+    cert: fs.readFileSync('CA.crt')
+}, app).listen(PORT, function(){
+    console.log("My https server listening on port " + PORT + "...");
+});
+
 require('./database');
 require('./passport/local-auth');
 
+
+
+
+
 // settings
-app.set('port', process.env.PORT || 3000);
+//app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('ejs', engine);
 app.set('view engine', 'ejs');
