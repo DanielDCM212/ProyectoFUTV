@@ -1,5 +1,5 @@
 module.exports = {
     mongodb: {
-        URI: 'mongodb://localhost:27017/node-loggin-passport-local'
+        URI: 'mongodb://localhost:27017/futv'
     }
 }
