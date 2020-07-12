@@ -1,3 +1,28 @@
 <%- layout('layouts/main.ejs') %>
 
 <h1>Historial</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>N°</th>
+            <th>ubicacion</th>
+            <th>Fecha</th>
+            <th>Ruta</th>
+            <th>Estado</th>
+            <th>Generar Boleto</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for(var i=0; i < history.length ; i++) { %>
+            <tr>
+                <td><%= i%></td>
+                <td><%= history[i].ubicacion %></td>
+                <td><%= history[i].date %></td>
+                <td><%= history[i].ruta %></td>
+                <td><%= history[i].used %></td>
+                <td>Push<td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>

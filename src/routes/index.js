@@ -3,6 +3,9 @@ const router = express.Router();
 const passport = require('passport');
 
 const Card = require('../models/cards');
+const Ticket = require('../models/ticket');
+
+
 const { response } = require('express');
 
 router.get('/', (req, res, next) =>{
@@ -43,12 +46,6 @@ router.get('/logout', (req, res, next) => {
 router.get('/profile', async (req, res) => {
     const user_id = req.user._id;
     
-    // Card.findOne({userID: user_id})
-    //     .then(data => {
-    //         res.render('profile', {data});
-    //     })
-    //     .catch(err => console.log(err));
-
     console.log(req.user._id);
     try {
         const data = await Card.findOne({userID:req.user._id});
@@ -67,13 +64,16 @@ router.get('/card', (req, res ) =>{
 });
 
 router.get('/history', async function name (req, res, next) {
-    res.render('history');
+    const history = await Ticket.find({userID:req.user._id});
+    res.render('history', {
+        history
+    });
 });
 
 
 router.post('/card', async (req, res, next) => {
-    // const card = await Card.findOne({ userID: req.body.userID });
-    // console.log( card );
+    //const card = await Card.findOne({ userID: req.body.userID });
+
     const card = new Card(req.body);
     await card.save();
     console.log(card);
@@ -85,8 +85,18 @@ router.get('/pay', (req, res, next) =>{
     res.render('pay');
 });
 
-router.post('/pay', (req, res, next) =>{
-    res.redirect('history');
+router.post('/pay', async (req, res, next) =>{
+
+    const card = await Card.findOne({userID:req.user._id});
+    
+    if ( card ) {
+        const ticket = new Ticket(req.body);
+        ticket.save()
+        res.redirect('history');
+    }else{
+        //res.flash('El email ya existe.');
+        res.redirect('card');
+    }
 });
 
 function isAuthenticated ( req, res, next) {
