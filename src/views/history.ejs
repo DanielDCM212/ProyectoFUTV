@@ -14,14 +14,14 @@
         </tr>
     </thead>
     <tbody>
-        <% for(var i=0; i < history.length ; i++) { %>
+        <% for(var i=history.length -1 ; i >= 0 ; i--) { %>
             <tr>
                 <td><%= i%></td>
                 <td><%= history[i].ubicacion %></td>
                 <td><%= history[i].date %></td>
                 <td><%= history[i].ruta %></td>
                 <td><%= history[i].used %></td>
-                <td>Push<td>
+                <td><button>Generar Ticket</button><td>
             </tr>
         <% } %>
     </tbody>
