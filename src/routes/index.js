@@ -91,7 +91,7 @@ router.post('/pay', async (req, res, next) =>{
     
     if ( card ) {
         const ticket = new Ticket(req.body);
-        ticket.date = Date;
+        ticket.date = Date();
         ticket.save();
         res.redirect('history');
     }else{
