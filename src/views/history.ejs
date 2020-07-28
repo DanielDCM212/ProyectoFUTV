@@ -3,39 +3,40 @@
 
 <h1>Historial</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>N°</th>
-            <!-- <th>id</th> -->
-            <th>ubicacion</th>
-            <th>Fecha</th>
-            <th>Ruta</th>
-            <th>Estado</th>
-            <th>Generar Boleto</th>
-            <th>Ticket</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% for(var i=history.length -1 ; i >= 0 ; i--) { %>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
             <tr>
-                <td><%= i%></td>
-                <!-- <td><%= history[i]._id%></td> -->
-                <td><%= history[i].ubicacion %></td>
-                <td><%= history[i].date %></td>
-                <td><%= history[i].ruta %></td>
-                <td><%= history[i].used %></td>
-                <td><button id="<%= "data".concat(i)%>" value=<%= history[i]._id%> onclick="makeCode('<%= "data".concat(i)%>','<%= "qrcode".concat(i)%>')">Generar</button></td>
-                <td>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <g id="<%= "qrcode".concat(i)%>"/>
-                    </svg>
-                </td>
+                <th>N°</th>
+                <!-- <th>id</th> -->
+                <th>ubicacion</th>
+                <th>Fecha</th>
+                <th>Ruta</th>
+                <th>Estado</th>
+                <th>Generar Boleto</th>
+                <th>Ticket</th>
             </tr>
-        <% } %>
-    </tbody>
-</table>
-
+        </thead>
+        <tbody>
+            <% for(var i=history.length -1 ; i >= 0 ; i--) { %>
+                <tr>
+                    <td><%= i%></td>
+                    <!-- <td><%= history[i]._id%></td> -->
+                    <td><%= history[i].ubicacion %></td>
+                    <td><%= history[i].date %></td>
+                    <td><%= history[i].ruta %></td>
+                    <td><%= history[i].used %></td>
+                    <td><button id="<%= "data".concat(i)%>" value=<%= history[i]._id%> onclick="makeCode('<%= "data".concat(i)%>','<%= "qrcode".concat(i)%>')">Generar</button></td>
+                    <td>
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g id="<%= "qrcode".concat(i)%>"/>
+                        </svg>
+                    </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
 
 <script type="text/javascript">
 
