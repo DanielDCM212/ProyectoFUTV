@@ -91,7 +91,8 @@ router.post('/pay', async (req, res, next) =>{
     
     if ( card ) {
         const ticket = new Ticket(req.body);
-        ticket.save()
+        ticket.date = new Date.now();
+        ticket.save();
         res.redirect('history');
     }else{
         //res.flash('El email ya existe.');
