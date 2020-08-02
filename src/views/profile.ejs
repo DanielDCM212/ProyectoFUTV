@@ -1,9 +1,36 @@
 <% layout('layouts/main.ejs') %>
-    <div class="card card-body">
-        <h1>Profile</h1>
-        <p><%= user.name %></p>>
-        <p><%= user.email %></p>
-        <p><%= user._id%></p>
-        <p><%= user.password %></p>
-        <p><%= data %></p>
+
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <div class="card mt-4 text-center">
+                <div class="card-header">
+                    <h3>
+                        Profile
+                    </h3>
+                </div>
+                <div class="card-body">
+                    
+                    <div class="form-group">
+                        <label for="Name">Nombre</label>
+                        <input type="text" value="<%= user.name %>" class="form-control text-center" disabled>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="Name">Correo</label>
+                        <input type="text" value="<%= user.email %>" class="form-control text-center" disabled>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Name">ID de Usuario</label>
+                        <input type="text" value="<%= user._id %>" class="form-control text-center" disabled>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="Name">Registro de Targeta</label>
+                        <input type="text" value="<%= data %>" class="form-control text-center" disabled>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
     </div>

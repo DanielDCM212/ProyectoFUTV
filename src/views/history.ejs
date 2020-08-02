@@ -1,40 +1,51 @@
 <%- layout('layouts/main.ejs') %>
 
-<h1>Historial</h1>
-
-<div class="table-responsive">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>N°</th>
-                <th>ubicacion</th>
-                <th>Fecha</th>
-                <th>Ruta</th>
-                <th>Estado</th>
-                <th>Generar Boleto</th>
-                <th>Ticket</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% for(var i=history.length -1 ; i >= 0 ; i--) { %>
-                <tr>
-                    <td><%= i%></td>
-                    <!-- <td><%= history[i]._id%></td> -->
-                    <td><%= history[i].ubicacion %></td>
-                    <td><%= history[i].date %></td>
-                    <td><%= history[i].ruta %></td>
-                    <td><%= history[i].used %></td>
-                    <td><button id="<%= "data".concat(i)%>" value=<%= history[i]._id%> onclick="makeCode('<%= "data".concat(i)%>','<%= "qrcode".concat(i)%>')">Generar</button></td>
-                    <td>
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <g id="<%= "qrcode".concat(i)%>"/>
-                        </svg>
-                    </td>
-                </tr>
-            <% } %>
-        </tbody>
-    </table>
-</div>
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <div class="card mt-4 text-center">
+                <div class="card-header">
+                    <h3>
+                        Historial
+                    </h3>
+                </div>
+                <div class="card-body">
+                    
+                    <table class="table table-striped table-inverse table-responsive">
+                        <thead class="thead-inverse" >
+                            <tr>
+                                <th>N°</th>
+                                <th>ubicacion</th>
+                                <th>Fecha</th>
+                                <th>Ruta</th>
+                                <th>Estado</th>
+                                <th>Generar Boleto</th>
+                                <th>Ticket</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(var i=history.length -1 ; i >= 0 ; i--) { %>
+                                <tr>
+                                    <td><%= i%></td>
+                                    <!-- <td><%= history[i]._id%></td> -->
+                                    <td scope="row" ><%= history[i].ubicacion %></td>
+                                    <td scope="row" ><%= history[i].date %></td>
+                                    <td scope="row" ><%= history[i].ruta %></td>
+                                    <td scope="row" ><%= history[i].used %></td>
+                                    <td scope="row" ><button class="btn-secondary" id="<%= "data".concat(i)%>" value=<%= history[i]._id%> onclick="makeCode('<%= "data".concat(i)%>','<%= "qrcode".concat(i)%>')">Generar</button></td>
+                                    <td scope="row" >
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <g id="<%= "qrcode".concat(i)%>"/>
+                                        </svg>
+                                    </td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 
 <script type="text/javascript">
 
