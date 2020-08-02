@@ -1,4 +1,86 @@
 <%- layout('layouts/main.ejs') %>
-<div class="row">
-    <h1>HOLA MUNDO</h1>
-</div>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <section id="title">
+        <div class="container-fluid" style="padding:7% 15% 2% 15%;">
+            <!-- Title -->
+            <div class="row">
+                <div class="col-lg-6">
+                <h1><em>F.U.T.V.</em> Donde tu camino comienza</h1>
+                </div>
+                <div class="col-lg-6">
+                <img class="image_title" src="static/images/bus.png" alt="bus">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Features -->
+
+    <section id="features">
+        <div class="row">
+            <div class="col-lg-4 col_fea">
+                <i class="icon fas fa-check-circle fa-4x"></i>
+                <h3>Donde Quieras.</h3>
+                <p>Reserva desde cualquier lugar que quieras.</p>
+            </div>
+            <div class="col-lg-4 col_fea">
+                <i class="icon fas fa-bullseye fa-4x"></i>
+                <h3>Cuando Quieras</h3>
+                <p>En el periodo de tiempo que se te acomode.</p>
+            </div>
+            <div class="col-lg-4 col_fea">
+                <i class="icon fas fa-heart fa-4x"></i>
+                <h3>Asegura tu boleto.</h3>
+                <p>No te quedes sin espacio y has tu reserva.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Testimonials -->
+
+    <section id="testimonials">
+        <h2>Cobertura</h2>
+        <div id="carousel-testimonal" class="carousel slide" data-ride="false" data-interval="false">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <h2>Muevete dentro de Merida, la ciudad blanca, cocociendo sus atractivos centros culturales.</h2>
+                    <img class="testimonal-img" src="static/images/catedral.png" alt="merida">
+                    <em>Catedral</em>
+                </div>
+                    <div class="carousel-item">
+                    <h2 class="testimonial-text">Ve y relajate a en Progreso, contemplando sus aguas azules a la orilla del mar.</h2>
+                    <img class="testimonal-img" src="static/images/progreso.png" alt="progreso">
+                    <em>Playa de Progreso</em>
+                </div>
+                <div class="carousel-item">
+                    <h2 class="testimonial-text">Conoce el resto de los municipios en nuestras distintas rutas.</h2>
+                    <img class="testimonal-img" src="static/images/ticul.png" alt="ticul">
+                    <em>Convento de San Antonio, Ticul</em>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carousel-testimonal" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-testimonal" role="button" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Press -->
+    <section id="press">
+        <img class="press_img" style="width:20%;" src="static/images/sectur.png" alt="sectur-logo">
+        <img class="press_img"  style="width:15%;" src="static/images/yuca.png" alt="yucatan-logo">
+        <img class="press_img" style="width:20%;" src="static/images/mx.png" alt="mx-logo">
+    </section>
+    
+    <!-- Footer -->
+    <footer id="footer">
+        <p>© Copyright 2020 F.U.T.V.</p>
+    </footer>

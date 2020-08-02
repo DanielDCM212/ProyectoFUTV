@@ -18,16 +18,16 @@ passport.use('local-signup', new LocalEstrategy({
     passwordField: 'password',
     passReqToCallback: true
 }, async (req, email, password, done) => {
-
     const user = await User.findOne({'email': email});
-    console.log(user)
+    // console.log(user);
     if( user ){
         return done(null, false, req.flash('signupMessage','El email ya existe.'));
     }else{
         const newUser = new User();
+        newUser.name = req.body.name;
         newUser.email = email;
         newUser.password = newUser.encryptPassword(password);
-        console.log(user)
+        // console.log(user)
         await newUser.save();
         done(null, newUser);
     }

@@ -46,13 +46,20 @@ router.get('/logout', (req, res, next) => {
 router.get('/profile', async (req, res) => {
     const user_id = req.user._id;
     
-    console.log(req.user._id);
+    // console.log(req.user._id);
     try {
         const data = await Card.findOne({userID:req.user._id});
-        console.log(data);
-        res.render('profile', {
-            data
-        });
+        // console.log(data);
+        
+        if( data ){
+            res.render('profile', {
+                data: "Activo"
+            });
+        }else{
+            res.render('profile', {
+                data: "Inactivo"
+            });
+        }
         
     } catch (error) {
         console.log(error);
@@ -63,6 +70,14 @@ router.get('/card', (req, res ) =>{
     res.render('card');
 });
 
+router.post('/card', async (req, res, next) => {
+    var card = await Card.findOneAndDelete({ userID: req.body.userID });
+    var card = await Card(req.body);
+    await card.save();
+    res.redirect("profile");
+    
+});
+
 router.get('/history', async function name (req, res, next) {
     const history = await Ticket.find({userID:req.user._id});
     res.render('history', {
@@ -70,16 +85,6 @@ router.get('/history', async function name (req, res, next) {
     });
 });
 
-
-router.post('/card', async (req, res, next) => {
-    //const card = await Card.findOne({ userID: req.body.userID });
-
-    const card = new Card(req.body);
-    await card.save();
-    console.log(card);
-    res.redirect("profile");
-    
-});
 
 router.get('/pay', (req, res, next) =>{
     res.render('pay');
